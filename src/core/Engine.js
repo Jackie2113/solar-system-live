@@ -4,6 +4,7 @@ import { RaycastManager } from './RaycastManager.js';
 import { Sun } from '../entities/Sun.js';
 import { Planet } from '../entities/Planet.js';
 import { Earth } from '../entities/Earth.js';
+import { AsteroidBelt } from '../entities/AsteroidBelt.js'; // <-- NEW IMPORT
 import { PLANETS_DATA } from '../utils/Constants.js';
 
 export class Engine {
@@ -43,6 +44,10 @@ export class Engine {
 
         this.sun = new Sun();
         this.scene.add(this.sun.mesh);
+
+        // --- NEW: Inject the 10,000 Particle Belt ---
+        this.asteroidBelt = new AsteroidBelt(10000);
+        this.scene.add(this.asteroidBelt.mesh);
 
         const J2000 = Date.UTC(2000, 0, 1, 12, 0, 0);
         const daysSinceJ2000 = (Date.now() - J2000) / (1000 * 60 * 60 * 24);
@@ -120,6 +125,9 @@ export class Engine {
                 p.entity.update(0); 
             }
         });
+        
+        // Reset the asteroid belt rotation as well
+        this.asteroidBelt.mesh.rotation.y = 0;
     }
 
     onWindowResize() {
@@ -135,6 +143,9 @@ export class Engine {
         const simTimeElapsed = delta * this.timeScale; 
 
         this.sun.update(simTimeElapsed);
+        
+        // --- NEW: Animate the Belt ---
+        this.asteroidBelt.update(simTimeElapsed);
 
         this.planets.forEach(p => {
             p.entity.update(simTimeElapsed); 
