@@ -4,7 +4,7 @@ export class Sun {
     constructor() {
         const geometry = new THREE.SphereGeometry(6, 64, 64);
         const textureLoader = new THREE.TextureLoader();
-        const texture = textureLoader.load('/textures/sun.jpg');
+        const texture = textureLoader.load('./textures/sun.jpg');
 
         const material = new THREE.MeshBasicMaterial({ map: texture });
         this.mesh = new THREE.Mesh(geometry, material);

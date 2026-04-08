@@ -10,9 +10,9 @@ export class Earth {
         const geometry = new THREE.SphereGeometry(2, 64, 64);
         const textureLoader = new THREE.TextureLoader();
 
-        const dayMap = textureLoader.load('/textures/earth_day.jpg');
-        const nightMap = textureLoader.load('/textures/earth_night.jpg');
-        const cloudMap = textureLoader.load('/textures/earth_clouds.jpg');
+        const dayMap = textureLoader.load('./textures/earth_day.jpg');
+        const nightMap = textureLoader.load('./textures/earth_night.jpg');
+        const cloudMap = textureLoader.load('./textures/earth_clouds.jpg');
 
         this.uniforms = {
             dayTexture: { value: dayMap },

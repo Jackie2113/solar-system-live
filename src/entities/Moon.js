@@ -4,7 +4,7 @@ export class Moon {
     constructor() {
         const geometry = new THREE.SphereGeometry(0.5, 32, 32);
         const textureLoader = new THREE.TextureLoader();
-        const moonTexture = textureLoader.load('/textures/moon.jpg');
+        const moonTexture = textureLoader.load('./textures/moon.jpg');
 
         const material = new THREE.MeshStandardMaterial({
             map: moonTexture,
