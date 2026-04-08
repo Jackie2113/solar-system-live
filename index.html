@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Live Solar System</title>
+  </head>
+	<body>
+    <div id="app"></div> 
+    
+    <div id="hud-header">
+      <div id="site-title">SYS.OP // ORBITAL_TRACKER</div>
+      <div id="sys-time">LOCAL_TIME: <span id="clock-display">00:00:00</span></div>
+    </div>
+
+    <div id="data-panel" class="hidden">
+      <div class="panel-header">
+        <h1 id="planet-name">TARGET_NAME</h1>
+        <button id="close-btn">[X]</button>
+      </div>
+      <div class="panel-body">
+        <p id="planet-info">Awaiting telemetry...</p>
+      </div>
+    </div>
+
+    <div id="settings-panel">
+        <div class="control-row">
+            <label class="hud-checkbox">
+                <input type="checkbox" id="toggle-orbits" checked> 
+                <span class="checkmark"></span>
+                RENDER_TRAJECTORY
+            </label>
+        </div>
+        <div class="control-row button-group">
+            <button class="speed-btn" data-speed="0">[ PAUSE ]</button>
+            <button class="speed-btn active" data-speed="1">[ 1X ]</button>
+            <button class="speed-btn" data-speed="2">[ 2X ]</button>
+            <button class="speed-btn" data-speed="3">[ 3X ]</button>
+            <button class="action-btn" id="btn-reset">[ RESET_SYNC ]</button>
+        </div>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+  </html>
