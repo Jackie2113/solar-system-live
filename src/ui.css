@@ -135,7 +135,7 @@ button.active {
 }
 /* --- HOVER TOOLTIP --- */
 #hover-tooltip {
-    position: absolute;
+    position: fixed;
     background: rgba(0, 0, 0, 0.85);
     border: 1px dashed #ff4444;
     color: #fff;

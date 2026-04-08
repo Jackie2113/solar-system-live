@@ -47,6 +47,7 @@ export class AsteroidBelt {
             dummy.updateMatrix();
             this.mesh.setMatrixAt(i, dummy.matrix);
         }
+        this.mesh.computeBoundingSphere();
 
         this.orbitalSpeed = (Math.PI * 2) / 1500; 
     }
