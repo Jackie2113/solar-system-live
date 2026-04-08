@@ -63,11 +63,14 @@ export class Planet {
         this.rotationSpeed = (Math.PI * 2) / daysPerRotation; 
     }
 
-    update(timeDelta) {
-        this.mesh.rotation.y += this.rotationSpeed * timeDelta;
+        update(timeDelta) {
+        // Multiply by 0.02 to make the visual spin 98% slower than the math
+        const cinematicSpin = this.rotationSpeed * 0.02; 
+        
+        this.mesh.rotation.y += cinematicSpin * timeDelta;
         
         if (this.atmosphereMesh) {
-            this.atmosphereMesh.rotation.y += (this.rotationSpeed * 1.1) * timeDelta; 
+            this.atmosphereMesh.rotation.y += (cinematicSpin * 1.1) * timeDelta; 
         }
     }
 }

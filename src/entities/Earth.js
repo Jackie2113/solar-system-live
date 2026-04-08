@@ -51,11 +51,13 @@ export class Earth {
         this.moonPivot.add(this.moon.mesh);
     }
 
-    update(timeDelta) {
-        const earthSpin = Math.PI * 2; 
+        update(timeDelta) {
+        // Slow down the Earth's day/night spin
+        const earthSpin = (Math.PI * 2) * 0.02; 
         this.earthMesh.rotation.y += earthSpin * timeDelta;
         this.cloudMesh.rotation.y += (earthSpin * 1.05) * timeDelta; 
         
+        // Keep the Moon's orbit and tidal lock strictly synced to the year
         const moonOrbitSpeed = (Math.PI * 2) / 27.3; 
         this.moonPivot.rotation.y += moonOrbitSpeed * timeDelta;
         this.moon.mesh.rotation.y += moonOrbitSpeed * timeDelta; 

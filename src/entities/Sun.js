@@ -15,7 +15,8 @@ export class Sun {
     }
 
     update(timeDelta) {
-        const sunSpinSpeed = (Math.PI * 2) / 27; 
+        // Slow down the Sun's spin
+        const sunSpinSpeed = ((Math.PI * 2) / 27) * 0.02; 
         this.mesh.rotation.y += sunSpinSpeed * timeDelta;
     }
 }
