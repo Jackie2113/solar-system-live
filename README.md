@@ -2,18 +2,15 @@
 
 A fully interactive, mathematically synchronized 3D simulation of our solar system, built entirely in vanilla JavaScript and **Three.js**. 
 
-This project started as a sandbox to understand the core concepts of WebGL and 3D rendering. It quickly evolved into a passion project exploring orbital mechanics, shader programming, and UI integration, styled as a retro-futuristic telemetry dashboard.
+This project evolved from a basic 3D sandbox into a high-performance astronomical engine featuring true orbital mechanics, instanced mesh rendering, and a retro-futuristic telemetry dashboard.
 
 ## 🌌 Live Simulation Features
 
-* **Real-Time Astronomical Positioning:** Calculates exact planetary coordinates upon launch using the **J2000 epoch**, dropping the planets exactly where they are in the real solar system today.
-* **Synchronized Physics:** Built on a universal engine rule where 1 real second = 1 simulated day. Planetary orbits and internal rotations are mathematically derived from their real-world periods (e.g., Venus slowly spinning backward while Jupiter rotates at extreme speed).
-* **Retro-Futuristic HUD:** A custom HTML/CSS overlay seamlessly integrated with the 3D canvas using Raycasting.
-* **Target Locking System:** Click on any celestial body to trigger an interactive wireframe highlight and pull up rich, dynamic telemetry data.
-* **Advanced Material Rendering:** * Custom GLSL shaders for Earth's Day/Night terminator transition.
-  * Additive Blending for independent, rotating atmospheric cloud layers (Earth and Venus).
-  * Double-sided transparent geometries for ring systems (Saturn).
-* **Cinematic Camera Controls:** Fully orbitable and pannable camera with heavy damping for a premium, heavy-machinery feel.
+* **True Keplerian Orbits:** Planets do not move in simple circles. The engine calculates elliptical paths (semi-major/minor axes) and applies real-world orbital inclination and eccentricity to every celestial body.
+* **J2000 Epoch Positioning:** Calculates exact planetary coordinates upon launch, dropping the planets exactly where they are in the real solar system today.
+* **The Universal Law (Math vs. Cinematic):** The underlying engine math dictates that 1 real second = 1 simulated day. Orbital paths strictly follow this law, while a cinematic dampener slows internal planetary rotation by 98% to prevent visual blurring.
+* **10,000-Particle Asteroid Belt:** Utilizes `THREE.InstancedMesh` to render 10,000 uniquely scaled and rotated low-poly asteroids in a single GPU draw call, forming a dense, rotating torus between Mars and Jupiter.
+* **Retro-Futuristic HUD & Raycasting:** A custom HTML/CSS overlay seamlessly integrated with the 3D canvas. Click planets for a glowing wireframe target lock, or hover over the Main Belt to trigger a cursor-tracking radar scanner.
 
 ## 🛠️ Technology Stack
 
@@ -28,3 +25,6 @@ This project started as a sandbox to understand the core concepts of WebGL and 3
    ```bash
    git clone [https://github.com/YourUsername/solar-system-live.git](https://github.com/YourUsername/solar-system-live.git)
    cd solar-system-live
+
+2. **How to view**
+  https://jackie2113.github.io/solar-system-live/
