@@ -37,21 +37,26 @@ export class Planet {
             this.mesh.add(this.atmosphereMesh); 
         }
 
-        // --- RINGS LOGIC ---
+        // --- RINGS LOGIC (FIXED) ---
         if (data.hasRings) {
             const ringGeo = new THREE.RingGeometry(data.ringInner, data.ringOuter, 64);
             const ringTex = textureLoader.load(data.ringTexture);
             const ringMat = new THREE.MeshStandardMaterial({
                 map: ringTex,
                 side: THREE.DoubleSide, 
-                transparent: true
+                transparent: true,
+                depthWrite: false // Prevents graphical glitches
             });
             this.ringMesh = new THREE.Mesh(ringGeo, ringMat);
+            
+            // Move rings out to the planet's distance
+            this.ringMesh.position.x = data.distance; 
             
             this.ringMesh.rotation.x = Math.PI / 2;
             this.ringMesh.rotation.y = 0.2; 
             
-            this.mesh.add(this.ringMesh); 
+            // Add to the orbit pivot, NOT the spinning planet mesh
+            this.pivot.add(this.ringMesh); 
         }
 
         const daysPerRotation = data.rotationPeriod / 24;

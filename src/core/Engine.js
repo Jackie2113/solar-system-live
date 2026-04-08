@@ -32,7 +32,8 @@ export class Engine {
         this.scene.add(sunLight);
 
         const textureLoader = new THREE.TextureLoader();
-        const bgTexture = textureLoader.load('./textures/stars_milky_way.jpg');
+        const BASE = import.meta.env.BASE_URL || '/';
+        const bgTexture = textureLoader.load(BASE + 'textures/stars_milky_way.jpg');
         const bgGeometry = new THREE.SphereGeometry(600, 64, 64);
         const bgMaterial = new THREE.MeshBasicMaterial({ 
             map: bgTexture, 
